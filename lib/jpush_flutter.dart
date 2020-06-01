@@ -285,7 +285,7 @@ class JPush {
 
   Future<void> removeLocalNotification(int id) async {
     print(flutter_log + "removeLocalNotification:");
-    await _channel.invokeMethod('removeLocalNotification', {id: id});
+    await _channel.invokeMethod('removeLocalNotification', {'id': id});
   }
 
 
