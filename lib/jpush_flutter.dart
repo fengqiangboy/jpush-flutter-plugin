@@ -283,6 +283,11 @@ class JPush {
     return notification.toMap().toString();
   }
 
+  Future<void> removeLocalNotification(int id) async {
+    print(flutter_log + "removeLocalNotification:");
+    await _channel.invokeMethod('removeLocalNotification', {id: id});
+  }
+
 
   /// 调用此 API 检测通知授权状态是否打开
   Future<bool> isNotificationEnabled() async {
