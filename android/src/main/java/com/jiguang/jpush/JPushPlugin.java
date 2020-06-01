@@ -112,6 +112,8 @@ public class JPushPlugin implements MethodCallHandler {
             isNotificationEnabled(call, result);
         } else if (call.method.equals("openSettingsForNotification")) {
             openSettingsForNotification(call, result);
+        } else if (call.method.equals("removeLocalNotification")) {
+            removeLocalNotification(call, result);
         }
         else {
             result.notImplemented();
@@ -318,6 +320,16 @@ public class JPushPlugin implements MethodCallHandler {
             JPushInterface.setBadgeNumber(registrar.context(),num);
             result.success(true);
         }
+    }
+
+    public void removeLocalNotification(MethodCall call, Result result){
+        Log.d(TAG,"removeLocalNotification: " + call.arguments);
+
+        HashMap<String, Object> map = call.arguments();
+
+        JPushInterface.removeLocalNotification(registrar.context(), (Integer)map.get("id"));
+
+        result.success(null);
     }
 
     /// 检查当前应用的通知开关是否开启
